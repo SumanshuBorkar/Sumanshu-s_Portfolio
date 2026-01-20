@@ -41,7 +41,6 @@ function Contacts() {
           </Row>
          </Container>
       </section>
-      <Footer/>
       </>
     );
   }

@@ -1,18 +1,17 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import React from 'react';
-import logo from '../assets/img/LOGO.png';
+import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap'; // Import Offcanvas
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/github-mark-white.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from "../assets/img/LOGO.png"
 
 function NavBar() {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    
+    // State to control the visibility of the mobile menu
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
@@ -26,64 +25,81 @@ function NavBar() {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const onUpdateActiveLink = (value) => {
-        setActiveLink(value);
-    }
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const navbarHeight = 80;
+            const elementPosition = element.offsetTop - navbarHeight;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+            
+            setActiveLink(sectionId);
+            setExpanded(false); // Close menu after clicking a link
+        }
+    };
 
     return (
-        <>
-            <Navbar className={scrolled ? "scrolled" : ""}>
-                <Container className='nav-container'>
-                    <Navbar.Brand className='logoContainer' as={Link} to="/">
-                        <img src={logo} alt="logo" className='toplogo' />
-                    </Navbar.Brand>
-                    {/* Removed Navbar.Toggle */}
-                    {/* Removed Navbar.Collapse */}
-                    <Nav className="me-auto">
-                        <Nav.Link
-                            as={Link}
-                            to="/"
-                            className={activeLink === "home" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink('home')}>
-                            Home
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            to="/skills"
-                            className={activeLink === "skills" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink('skills')}>
-                            Skills
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            to="/projects"
-                            className={activeLink === "projects" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink('projects')}>
-                            Projects
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            to="/contacts"
-                            className={activeLink === "connect" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink('connect')}>
-                            Contacts
-                        </Nav.Link>
-                    </Nav>
-                    <span className="navbar-text d-none d-lg-flex">
-                        <div className="social-icon">
-                            <a href="https://www.linkedin.com/in/sumanshu-borkar-b83a5b26b/"><img src={navIcon1} alt="LinkedIn" /></a>
-                            <a href="https://github.com/SumanshuBorkar"><img src={navIcon2} alt="GitHub" /></a>
-                            <a href="https://www.instagram.com/"><img src={navIcon3} alt="Instagram" /></a>
-                        </div>
-                        <Link to="/contacts">
-                            <button className="vvd">
+        <Navbar 
+            expand="lg" 
+            className={scrolled ? "scrolled" : ""} 
+            expanded={expanded} // Bind state to Navbar
+        >
+            <Container className='nav-container'>
+                
+                {/* Add your Logo/Brand here if you have one */}
+                <Navbar.Brand href="#home" style={{ visibility: !expanded ? 'visible' : 'hidden' }}>
+                    <img className='toplogo' src={logo} alt="Logo" />
+                </Navbar.Brand>
+
+                <Navbar.Toggle 
+                    aria-controls="offcanvasNavbar" 
+                    onClick={() => setExpanded(expanded ? false : "expanded")}
+                    className={expanded ? "open" : ""} // Apply your custom 'open' class for animation
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </Navbar.Toggle>
+
+                {/* The "Modal" (Offcanvas) that pops out from the right */}
+                <Navbar.Offcanvas
+                    id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel"
+                    placement="end"
+                    restoreFocus={false}
+                    show={expanded}
+                    onHide={() => setExpanded(false)}
+                    className="Responsive-modal"
+                >
+                    <Offcanvas.Header>
+                        <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    
+                    <Offcanvas.Body>
+                        <Nav className="justify-content-start align-items-center flex-grow-1 pe-3">
+                            <Nav.Link href="#home" className={activeLink === "home" ? "active navbar-link" : "navbar-link"} onClick={() => scrollToSection('home')}>Home</Nav.Link>
+                            <Nav.Link href="#about" className={activeLink === "about" ? "active navbar-link" : "navbar-link"} onClick={() => scrollToSection('about')}>About</Nav.Link>
+                            <Nav.Link href="#skills" className={activeLink === "skills" ? "active navbar-link" : "navbar-link"} onClick={() => scrollToSection('skills')}>Skills</Nav.Link>
+                            <Nav.Link href="#projects" className={activeLink === "projects" ? "active navbar-link" : "navbar-link"} onClick={() => scrollToSection('project')}>Projects</Nav.Link>
+                            <Nav.Link href="#contacts" className={activeLink === "contacts" ? "active navbar-link" : "navbar-link"} onClick={() => scrollToSection('connect')}>Connect</Nav.Link>
+                        </Nav>
+                        
+                        {/* Removed d-none so this shows in the mobile menu */}
+                        <span className="navbar-text">
+                            <div className="social-icon">
+                                <a href="https://www.linkedin.com/in/sumanshu-borkar-b83a5b26b/"><img src={navIcon1} alt="LinkedIn" /></a>
+                                <a href="https://github.com/SumanshuBorkar"><img src={navIcon2} alt="GitHub" /></a>
+                                <a href="https://www.instagram.com/"><img src={navIcon3} alt="Instagram" /></a>
+                            </div>
+                            <button className="vvd" onClick={() => scrollToSection('connect')}>
                                 <span>Let's connect</span>
                             </button>
-                        </Link>
-                    </span>
-                </Container>
-            </Navbar>
-        </>
+                        </span>
+                    </Offcanvas.Body>
+                </Navbar.Offcanvas>
+            </Container>
+        </Navbar>
     );
 }
 
