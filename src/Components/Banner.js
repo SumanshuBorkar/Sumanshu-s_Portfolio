@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
-import headerImg from '../assets/img/Astro.png';
 
 function Banner() {
   const [loopNum, setLoopNum] = useState(0);
@@ -84,7 +83,7 @@ function Banner() {
               </button>
             </Col>
             <Col xs={12} md={6} xl={5}>
-              <img src={headerImg} alt="Astronaut illustration" className="header-img" />
+              <img src="https://res.cloudinary.com/dxs2abkug/image/upload/v1769008079/Astro_z3dzdn.png" alt="Astronaut illustration" className="header-img" />
             </Col>
           </Row>
         </Container>
