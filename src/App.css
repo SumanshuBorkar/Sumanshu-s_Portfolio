@@ -1260,11 +1260,14 @@ nav.navbar .navbar-toggler {
 /************ Footer Css ************/
 
 .footer {
+  /* background-image: url(""); */
   background: linear-gradient(
       90.21deg,
       hsla(206, 92%, 10%, 0.986),
       rgba(0, 0, 0, 0.832)
     );
+  /* background-size:cover;
+  background-repeat: no-repeat; */
   color: #b8b8b8;
   padding: 60px 40px 20px;
   font-family: "Inter", sans-serif;

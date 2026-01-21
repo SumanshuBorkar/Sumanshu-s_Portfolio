@@ -3,8 +3,8 @@ import { Container, Row, Col, Nav, Tab, Modal, Carousel } from 'react-bootstrap'
 import ProjectCard from './ProjectCard';
 import img1 from './../assets/img/Resume.png';
 import img3 from './../assets/img/Flub.png';
-import img4 from "./../assets/img/Vegi.png";
-import img5 from "./../assets/img/PDFProcessor.jpg";
+// import img4 from "./../assets/img/Vegi.png";
+// import img5 from "./../assets/img/PDFProcessor.jpg";
 import python from '../assets/img/fastapi-icon.svg';
 
 function Project() {
@@ -18,8 +18,8 @@ function Project() {
     { title: 'Web Scraper', description: 'Python fast API web scraping tool', imgUrl: [python], redirect: 'https://ai-recipt...' },
     { title: 'Car Rental App', description: 'M.E.R.N Project', descriptionlong : `Lore Ipsum.`, imgUrl: ["https://res.cloudinary.com/dxs2abkug/image/upload/v1768922426/Screenshot_2026-01-20_204034_qbafo5.png", "https://res.cloudinary.com/dxs2abkug/image/upload/v1768922445/Screenshot_2026-01-20_204159_v1x4mu.png", "https://res.cloudinary.com/dxs2abkug/image/upload/v1768922422/Screenshot_2026-01-20_204256_sebraq.png", "https://res.cloudinary.com/dxs2abkug/image/upload/v1768922422/Screenshot_2026-01-20_204356_n7biou.png", "https://res.cloudinary.com/dxs2abkug/image/upload/v1768922421/Screenshot_2026-01-20_204333_v5xwoa.png", "https://res.cloudinary.com/dxs2abkug/image/upload/v1768922421/Screenshot_2026-01-20_204843_ypziow.png"], redirect: 'https://car-rental...' },
     { title: 'Flub', description: 'Social Media App', imgUrl: [img3], redirect: 'https://flub-fontend...' },
-    { title: 'Vegi Store', description: 'E-Commerce', imgUrl: [img4], redirect: 'https://vegi-store...' },
-    { title: 'AI-Recipt-Processor', description: 'Full-stack PDF Analysis', imgUrl: [img5], redirect: 'https://ai-recipt...' },
+    // { title: 'Vegi Store', description: 'E-Commerce', imgUrl: [img4], redirect: 'https://vegi-store...' },
+    // { title: 'AI-Recipt-Processor', description: 'Full-stack PDF Analysis', imgUrl: [img5], redirect: 'https://ai-recipt...' },
 
   ];
 

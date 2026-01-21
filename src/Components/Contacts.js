@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import image2 from './../assets/img/space-shuttle.svg';
-import Footer from './Footer';
+import image2 from './../assets/img/Astro2.png';
 
 function Contacts() {
     
@@ -16,7 +15,7 @@ function Contacts() {
             </Col>
           <Col md={6}>
               <h2>Get In Touch</h2>
-              <form  action="https://formspree.io/f/xnqyylvz" method="post"
+              <form  action="https://formspree.io/f/xnjjgddb" method="post"
                     className='input-forms' >
                   <Row>
                       <Col sm={6} className='px-1'>
