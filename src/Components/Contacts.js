@@ -11,7 +11,7 @@ function Contacts() {
          <Container>
           <Row className='align-items-center'>
             <Col md={6}>
-              <img src={image2} alt="no image" />
+              <img src={image2} alt="not available" />
             </Col>
           <Col md={6}>
               <h2>Get In Touch</h2>

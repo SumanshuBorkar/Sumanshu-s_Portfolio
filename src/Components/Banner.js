@@ -7,7 +7,6 @@ import headerImg from '../assets/img/Astro.png';
 function Banner() {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const toRotate = ["Web Developer", "Web Designer", "Full Stack Developer"];
   const [text, setText] = useState('');
   const period = 2000;
   const [delta, setDelta] = useState(300 - Math.random() * 100);
@@ -27,6 +26,7 @@ function Banner() {
 
   // Memoize the tick function to prevent unnecessary re-creations
   const tick = useCallback(() => {
+    const toRotate = ["Web Developer", "Web Designer", "Full Stack Developer"];
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
     let updateText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
@@ -45,7 +45,7 @@ function Banner() {
       setLoopNum(loopNum + 1);
       setDelta(500);
     }
-  }, [loopNum, isDeleting, text, toRotate, period]);
+  }, [loopNum, isDeleting, text, period]);
 
   useEffect(() => {
     const ticker = setInterval(() => {
